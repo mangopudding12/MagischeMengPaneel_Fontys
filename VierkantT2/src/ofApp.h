@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "Cel.h"
+#include "iZes.h"
 
 class ofApp : public ofBaseApp{
 
@@ -23,4 +24,9 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 
 		Cel dolfijn;
+		iZes vis;
+		iZes vis1;
+		iZes vis2;
+		iZes vis3;
+		iZes vis4;
 };

@@ -5,18 +5,30 @@ bool hoi = false;
 //--------------------------------------------------------------
 void ofApp::setup()
 {
-	//Cel(ofVec2f Rbh_, ofVec2f Rlocation_, float snelheid_, int vorm_, ofVec2f Ibh_);
+	
 	ofVec2f rbh_, Rloca_, ibh_;
 	rbh_.set(200, 200);
 	Rloca_.set(ofGetWidth() / 2, 100);
 	ibh_.set(40, 40); 
 
-	dolfijn = Cel(rbh_,Rloca_, 0.3,2,ibh_);
+	dolfijn = Cel(rbh_,Rloca_);
+	vis = iZes(Rloca_, 2, 0.3, ibh_,0,0, rbh_);
+	vis1 = iZes(Rloca_, 2, 0.3, ibh_, 200, 0, rbh_);
+	vis2 = iZes(Rloca_, 2, 0.3, ibh_, 200, 200, rbh_);
+	vis3 = iZes(Rloca_, 2, 0.3, ibh_, 0, 200, rbh_);
+
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-	dolfijn.Imove();
+
+	if (hoi == false)
+	{
+		vis.Imove();
+		vis1.Imove();
+		vis2.Imove();
+		vis3.Imove();
+	}
 }
 
 //--------------------------------------------------------------
@@ -30,7 +42,15 @@ void ofApp::draw()
 		ofSetBackgroundColor(255);
 	}
 	
-	dolfijn.Idisplay();
+	ofSetColor(19, 186, 191);
+	vis.Idisplay(); 
+	ofSetColor(19, 186, 150);
+	vis1.Idisplay();
+	ofSetColor(19, 186, 100);
+	vis2.Idisplay();
+	ofSetColor(19, 186, 50);
+	vis3.Idisplay();
+	
 }
 
 //--------------------------------------------------------------
