@@ -1,70 +1,33 @@
 #include "ofApp.h"
 
-// Ik heb een probleem 
-// de lijnen volgende blokjes checken alleen in het begin
-// de locatie van het vierkant maar ik wil eigenlijk dat 
-// ze constant kijken naar de locatie van het vierkant. 
-// Want dan kan ik het vierkant ook bewegen en daar reageren de 
-// lijn volgende vierkanten dan ook op. 
-// Mijn code is nu al een rommeltje aaaaaa 
-// Misschien is er eerder over nadenken toch een goed plan hihi :P 
-
-
-bool hoi = false; 
-
 //--------------------------------------------------------------
-void ofApp::setup()
-{ 
-	ofVec2f rbh, Rloca, ibh; 
-	ibh.set(40, 40);
-
-	for (int i = 0; i < 5; i++)
-	{
-		rbh.set(20*(i+2), 20 * (i + 2));
-		Rloca.set(50 + ((i*120)+150), 200);
-		
-
-		cell[i] = HoofdCel(rbh, Rloca, ibh);
-	}
-	
+void ofApp::setup() 
+{
+	vierkant.setup(200,200,100,250);
+	vierkant.SetupminiCel(2, 0.3, 20, 20); // int vorm_, float speed_, float Ibh_x, float Ibh_y	
 }
 
 //--------------------------------------------------------------
 void ofApp::update()
 {
-	for (int i = 0; i < 5; i++)
-	{
-		cell[i].IBmove();
-		cell[i].Vmove(); 
-	}
+	vierkant.MoveAll(); 
 }
 
 //--------------------------------------------------------------
 void ofApp::draw()
 {
-	for (int i = 0; i < 5; i++)
-	{
-		if (hoi == true)
-		{
-			cell[i].Vdisplay();
-		}
-		else {
-			ofSetBackgroundColor(255);
-		}
-
-		cell[i].IBdisplay();
-	}
+	vierkant.Vdisplay();
+	vierkant.minicelDisplay(); 
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-	
-	hoi = true; 
+
 }
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-	hoi = false;
+
 }
 
 //--------------------------------------------------------------

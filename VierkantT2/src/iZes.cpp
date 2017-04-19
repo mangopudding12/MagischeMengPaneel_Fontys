@@ -3,10 +3,10 @@
 
 iZes::iZes(ofVec2f Ilocation_, int vorm_, float speed_, ofVec2f Ibh_, int x, int y, ofVec2f Rbh_)
 {
-	Rlocation = Ilocation_; 
+	//Rlocation = Ilocation_; 
 	Rbh = Rbh_; 
-	Ilocation.x = Ilocation_.x + x;
-	Ilocation.y = Ilocation_.y + y; 
+	Ilocation.x = Ilocation_.x+x;
+	Ilocation.y = Ilocation_.y; 
 	snelheid = speed_; 
 	vorm = vorm_;
 

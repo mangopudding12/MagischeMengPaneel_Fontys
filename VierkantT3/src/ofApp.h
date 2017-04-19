@@ -2,6 +2,8 @@
 
 #include "ofMain.h"
 #include "HoofdCel.h"
+#include "VierkantCel.h"
+
 
 class ofApp : public ofBaseApp{
 
@@ -21,6 +23,7 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
-
-		HoofdCel cell[5]; 
+		
+		VierkantCel vierkant; 
+		
 };

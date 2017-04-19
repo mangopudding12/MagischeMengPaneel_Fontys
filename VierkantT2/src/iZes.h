@@ -1,7 +1,8 @@
 #pragma once
 #include "ofMain.h"
+#include "Cel.h"
 
-class iZes 
+class iZes : public Cel
 {
 public: 
 	iZes() {};
@@ -12,7 +13,7 @@ public:
 
 private: 
 	ofVec2f Rbh;
-	ofVec2f Rlocation;
+	//ofVec2f Rlocation;
 	int vorm;
 	float snelheid;
 	ofVec2f Ibh;
