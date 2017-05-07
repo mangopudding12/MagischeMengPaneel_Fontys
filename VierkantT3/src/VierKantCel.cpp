@@ -18,10 +18,10 @@ void VierkantCel::minicelDisplay()
 
 void VierkantCel::minicelMove()
 {
-		mCel[0].move(location.x, location.y, bh.x, bh.y,1,speed);	
-		mCel[1].move(location.x, location.y, bh.x, bh.y,2,speed);
-		mCel[2].move(location.x, location.y, bh.x, bh.y, 3, speed);
-		mCel[3].move(location.x, location.y, bh.x, bh.y, 4, speed);
+		mCel[0].move(location.x, location.y, bh.x, bh.y,1,speedx, speedy);
+		mCel[1].move(location.x, location.y, bh.x, bh.y,2,speedx, speedy);
+		mCel[2].move(location.x, location.y, bh.x, bh.y, 3, speedx, speedy);
+		mCel[3].move(location.x, location.y, bh.x, bh.y, 4, speedx, speedy);
 }
 
 void VierkantCel::Vdisplay()

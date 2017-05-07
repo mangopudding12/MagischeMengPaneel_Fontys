@@ -24,6 +24,16 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		
-		VierkantCel vierkant; 
-		
+		VierkantCel vierkant;
+		VierkantCel vierkant1;
+		VierkantCel vierkant2;
+		VierkantCel vierkant3;
+		VierkantCel vierkant4;
+		VierkantCel vierkant5;
+		VierkantCel vierkant6;
+		VierkantCel vierkant7;
+
+
+
+		bool zichtbaar = false; 
 };
