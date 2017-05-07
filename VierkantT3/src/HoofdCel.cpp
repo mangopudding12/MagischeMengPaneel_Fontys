@@ -6,9 +6,10 @@ void HoofdCel::setup(float bh_x, float bh_y, float location_x, float location_y)
 	location.set(location_x, location_y);
 }
 
-void HoofdCel::MoveAll()
+void HoofdCel::MoveAll(int mouse,int mousey)
 {
-	location.x += ofRandom(-0.4, 0.4);
-	location.y += ofRandom(-0.4, 0.4);
+	speed = mouse;
+	location.x = speed;
+	location.y = mousey;
 }
 

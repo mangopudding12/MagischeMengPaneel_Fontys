@@ -3,14 +3,15 @@
 //--------------------------------------------------------------
 void ofApp::setup() 
 {
-	vierkant.setup(200,200,100,250);
+	vierkant.setup(200,200,mouseX,mouseY);
 	vierkant.SetupminiCel(2, 0.3, 20, 20); // int vorm_, float speed_, float Ibh_x, float Ibh_y	
 }
 
 //--------------------------------------------------------------
 void ofApp::update()
 {
-	vierkant.MoveAll(); 
+	vierkant.minicelMove();
+	vierkant.MoveAll(mouseX,mouseY); 
 }
 
 //--------------------------------------------------------------
