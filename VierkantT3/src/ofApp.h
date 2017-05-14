@@ -2,7 +2,7 @@
 
 #include "ofMain.h"
 #include "HoofdCel.h"
-#include "VierkantCel.h"
+#include "VierKantCel.h"
 
 
 class ofApp : public ofBaseApp{
@@ -24,6 +24,8 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		
+		//vector<VierkantCel>vierkantte;
+
 		VierkantCel vierkant;
 		VierkantCel vierkant1;
 		VierkantCel vierkant2;
@@ -32,8 +34,18 @@ class ofApp : public ofBaseApp{
 		VierkantCel vierkant5;
 		VierkantCel vierkant6;
 		VierkantCel vierkant7;
-
-
-
 		bool zichtbaar = false; 
+
+		// device stuff 
+		void apparaatSetup(int welkeApparaat_);
+		void apparaatUpdate();
+		int welkeApparaat;
+
+		ofArduino myArduino;
+		bool arduino_opstarten;
+		float pot1;
+		float pot2;
+private: 
+	void setupArduino(const int & version);
+	void analogPinChanged(const int & pinNum);
 };

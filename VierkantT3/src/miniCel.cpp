@@ -8,17 +8,19 @@ miniCel::miniCel(int vorm_, float speed_, float Ibh_x, float Ibh_y, float loca_x
 	Ilocation.set(loca_x + Iloca_x, loca_y + Iloca_y);
 }
 
-void miniCel::display()
+void miniCel::display(int kleur_)
 {
-	ofSetColor(50, 255, 100);
+	int kleur = ofMap(kleur_, 0, 1023, 0, 255);
+	ofSetColor(75, kleur, kleur-50);
 	ofSetCircleResolution(6); // Per ongeluk een 6 hoek hihi 
 	ofEllipse(Ilocation.x,Ilocation.y, Ibh.x , Ibh.y );
 }
 
 
-void miniCel::move(float loca_x, float loca_y, float bh_x, float bh_y,int state_, float speedx_,float speedy_)
+void miniCel::move(float loca_x, float loca_y, float bh_x, float bh_y,int state_, float speedx_,float speedy_, float snelheidpotmeter_)
 {
-	//cout << state << endl;
+	speed = ofMap(snelheidpotmeter_, 0, 1023, 0.1, 3); // de 3 niet hoger maken want dan wordt vierkant verstoort
+	
 
 	if (geit == false)
 	{
@@ -26,71 +28,48 @@ void miniCel::move(float loca_x, float loca_y, float bh_x, float bh_y,int state_
 		geit = true;
 	}
 
-		// Verplaatsing Xas van Links naar Rechts 
-		if (Ilocation.x <= (loca_x + bh_x) && Ilocation.x >= loca_x && state == 1)
+	if (state == 1) // Links naar recht bewegen op Xas.
+	{
+		Ilocation.x += (speed + speedx_);
+		Ilocation.y = loca_y;	
+
+		if (Ilocation.x >= (loca_x + bh_x))
 		{
-			Ilocation.x += (speed +speedx_);
-			Ilocation.y = loca_y;	
-		}
-		else if (Ilocation.x < loca_x  && state == 1)
-		{
-			Ilocation.x = loca_x + speedx_;
-			Ilocation.y = loca_y;
-		}
-		else if (Ilocation.x >= (loca_x + bh_x) && state == 1) {
+			Ilocation.x = (loca_x + bh_x);
 			state = 2;
-		} 
-
-
-
-		else if (Ilocation.y <= (loca_y + bh_y) && Ilocation.y >= loca_y && state == 2)
-		{
-			Ilocation.x = loca_x + bh_x;
-			Ilocation.y += (speed + speedy_);
 		}
-		else if (Ilocation.y < loca_y && state == 2)
+	}
+	else if (state == 2) // Beneden naar boven op de yAS (houd rekening het is omgekeerd)
+	{
+		Ilocation.x = loca_x + bh_x;
+		Ilocation.y += (speed + speedy_);
+
+		if (Ilocation.y >= (loca_y + bh_y))
 		{
-			Ilocation.x = loca_x + bh_x;
-			Ilocation.y = loca_y + speedy_;
-		}
-		else if (Ilocation.y >= (loca_y + bh_y) && state == 2)
-		{
+			Ilocation.y = (loca_y + bh_y);
 			state = 3;
-		} 
-		
-
-
-		// Zorgt dat vierkant van Rechts naar Links beweegt op Xas 
-		else if (Ilocation.x <= loca_x + bh_x && Ilocation.x > loca_x  && state == 3)
-		{
-			Ilocation.x -= (speed - speedx_);
-			Ilocation.y = loca_y + bh_y;
 		}
-		// Wanneer er een hard versnelling is naar Links wordt met deze 
-		// else if ervoor gezorgt dat kleine vierkant in grote vierkant blijft
-		else if (Ilocation.x > loca_x + bh_x && state == 3) 
+	}
+	else if (state == 3) // Links naar Rechts op de Xas 
+	{
+		Ilocation.x -= (speed - speedx_);
+		Ilocation.y = loca_y + bh_y;
+
+		if (Ilocation.x <= loca_x)
 		{
-			Ilocation.x = (loca_x + bh_x) + speedx_;
-			Ilocation.y = loca_y + bh_y;
-		} 
-		else if (Ilocation.x < loca_x && state == 3)
-		{
+			Ilocation.x = loca_x;
 			state = 4;
 		}
-		
+	}
+	else if (state == 4) // Boven naar beneden op de Yas 
+	{
+		Ilocation.x = loca_x;
+		Ilocation.y -= (speed - speedy_);
 
-		else if (Ilocation.y <= loca_y + bh_y && Ilocation.y > loca_y  && state == 4)
+		if (Ilocation.y <= loca_y)
 		{
-			Ilocation.x = loca_x;
-			Ilocation.y -= (speed - speedy_);
-		}
-		else if (Ilocation.y > loca_y + bh_y && state == 4)
-		{
-			Ilocation.x = loca_x;
-			Ilocation.y = (loca_y + bh_y) + speedy_;
-		}
-		else if (Ilocation.y <= loca_y && state == 4)
-		{
+			Ilocation.y = loca_y;
 			state = 1;
 		}
+	}
 }

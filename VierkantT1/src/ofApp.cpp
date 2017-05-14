@@ -5,7 +5,7 @@ float marge = 500;
 ofVec2f Rlocation; 
 ofVec2f Rspeed; 
 
-ofVec
+
 
 //--------------------------------------------------------------
 void ofApp::setup()
