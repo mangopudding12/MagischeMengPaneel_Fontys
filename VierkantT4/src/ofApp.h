@@ -1,12 +1,11 @@
 #pragma once
 
 #include "ofMain.h"
-#include "HoofdCel.h"
-#include "VierKantCel.h"
+#include "M_HoofdCel.h"
+#include "M_VierKantCel.h"
 //#include "ofxGPIO.h"
 
-// Je moet nog van github de ofxGPIO.h blibotheek downloaden anders werk dit allemaal niet
-// Vergeet die bibliotheek niet in de goeie openframeworks map te zettten. 
+// ofxGPIO werkt niet in openFrameworks op mijn PC op de een of andere manier.
 
 class ofApp : public ofBaseApp{
 
@@ -27,15 +26,6 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		
-		//vector<VierkantCel>vierkantte;
-		VierkantCel vierkant;
-		VierkantCel vierkant1;
-		VierkantCel vierkant2;
-		VierkantCel vierkant3;
-		VierkantCel vierkant4;
-		VierkantCel vierkant5;
-		VierkantCel vierkant6;
-		VierkantCel vierkant7;
 		bool zichtbaar = false; 
 
 		// device stuff 
@@ -48,16 +38,6 @@ class ofApp : public ofBaseApp{
 		// Van de arduino
 			ofArduino myArduino;
 			bool arduino_opstarten;
-			
-		// raspberry pi 
-		// a2dChannel geeft aan welke pin je
-		// uitleest op de chip!!! 
-		//	int a2dChannel = 0; // pin 1
-		//	unsigned char data[3];
-
-		//	int a2dChannel2 = 1; // pin 2
-		//	unsigned char data2[3];
-		//	MCP mcp;
 
 private:
 

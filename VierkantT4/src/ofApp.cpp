@@ -13,7 +13,7 @@ void ofApp::setup()
 	
 	ofSetBackgroundColor(255);
 
-	vierkant.setup(200, 200, 500,100);
+	vierkant.setup(20, 200, 500,100);
 	vierkant.SetupminiCel(2, 0.1, 30, 30); // int vorm_, float speed_, float Ibh_x, float Ibh_y	
 
 	vierkant1.setup(80, 80, 500, 100);
