@@ -13,29 +13,25 @@ void ofApp::setup()
 	
 	ofSetBackgroundColor(255);
 
-	vierkant.setup(20, 200, 500,100);
-	vierkant.SetupminiCel(2, 0.1, 30, 30); // int vorm_, float speed_, float Ibh_x, float Ibh_y	
+	//float bh_x, float bh_y, float location_x, float location_y
+	testM.Msetup(250,250,100,50);
+	testM.SetupVierKantCel(2,0.3,60,60);
 
-	vierkant1.setup(80, 80, 500, 100);
-	vierkant1.SetupminiCel(2, 0.1, 20, 20); // int vorm_, float speed_, float Ibh_x, float Ibh_y	
+	testM1.Msetup(250, 250, 350, 50);
+	testM1.SetupVierKantCel(2, 0.3, 60, 60);
 
-	vierkant2.setup(80, 80, 100, 530);
-	vierkant2.SetupminiCel(2, 0.1, 30, 30); // int vorm_, float speed_, float Ibh_x, float Ibh_y	
+	testM2.Msetup(250, 250, 100, 300);
+	testM2.SetupVierKantCel(2, 0.3, 60, 60);
 
-	vierkant3.setup(80, 80, 500, 450);
-	vierkant3.SetupminiCel(2, 0.1, 20, 20); // int vorm_, float speed_, float Ibh_x, float Ibh_y	
+	testM3.Msetup(250, 250, 350, 300);
+	testM3.SetupVierKantCel(2, 0.3, 60, 60);
 
-	vierkant4.setup(80, 80, 870, 560);
-	vierkant4.SetupminiCel(2, 0.1, 30, 30); // int vorm_, float speed_, float Ibh_x, float Ibh_y	
+	testM4.Msetup(250, 250, 600, 50);
+	testM4.SetupVierKantCel(2, 0.3, 60, 60);
 
-	vierkant5.setup(80, 80, 600, 290);
-	vierkant5.SetupminiCel(2, 0.1, 20, 20); // int vorm_, float speed_, float Ibh_x, float Ibh_y	
+	testM5.Msetup(250, 250, 600, 300);
+	testM5.SetupVierKantCel(2, 0.3, 60, 60);
 
-	vierkant6.setup(80, 80, 250, 300);
-	vierkant6.SetupminiCel(2, 0.1, 30, 30); // int vorm_, float speed_, float Ibh_x, float Ibh_y	
-
-	vierkant7.setup(80, 80, 870, 100);
-	vierkant7.SetupminiCel(2, 0.1, 20, 20); // int vorm_, float speed_, float Ibh_x, float Ibh_y	
 }
 
 
@@ -44,30 +40,18 @@ void ofApp::update()
 {
 	apparaatUpdate();
 	
+	testM.VierKantCelMove(50);
 
-	vierkant.minicelMove(pot2);
-	vierkant.MoveAll();
+	testM1.VierKantCelMove(50);
 
-	vierkant1.minicelMove(pot2);
-	vierkant1.MoveAll();
+	testM2.VierKantCelMove(50);
 
-	vierkant2.minicelMove(pot2);
-	vierkant2.MoveAll();
+	testM3.VierKantCelMove(50);
 
-	vierkant3.minicelMove(pot2);
-	vierkant3.MoveAll();
+	testM4.VierKantCelMove(50);
 
-	vierkant4.minicelMove(pot2);
-	vierkant4.MoveAll();
+	testM5.VierKantCelMove(50);
 
-	vierkant5.minicelMove(pot2);
-	vierkant5.MoveAll();
-
-	vierkant6.minicelMove(pot2);
-	vierkant6.MoveAll();
-
-	vierkant7.minicelMove(pot2);
-	vierkant7.MoveAll();
 }
 
 
@@ -75,20 +59,20 @@ void ofApp::update()
 //--------------------------------------------------------------
 void ofApp::draw()
 {
-	if (zichtbaar == true)
-	{
-		vierkant.Vdisplay();
-		vierkant2.Vdisplay();
-		vierkant1.Vdisplay();
-		vierkant3.Vdisplay();
-		vierkant4.Vdisplay();
-		vierkant5.Vdisplay();
-		vierkant6.Vdisplay();
-		vierkant7.Vdisplay();
-	}
-
-
+	testM.M_display();
+	testM4.M_display();
+	testM3.M_display();
 	
+
+
+	testM.VierKantCelDisplay(0);
+	testM1.VierKantCelDisplay(0);
+	testM2.VierKantCelDisplay(0);
+	testM3.VierKantCelDisplay(0);
+	testM4.VierKantCelDisplay(0);
+	testM5.VierKantCelDisplay(0);
+
+	/*
 	vierkant3.minicelDisplay(pot1);
 	vierkant4.minicelDisplay(pot1);
 	vierkant5.minicelDisplay(pot1);
@@ -96,7 +80,7 @@ void ofApp::draw()
 	vierkant7.minicelDisplay(pot1);
 	vierkant.minicelDisplay(pot1);
 	vierkant1.minicelDisplay(pot1);
-	vierkant2.minicelDisplay(pot1);
+	vierkant2.minicelDisplay(pot1);*/
 }
 
 
@@ -208,7 +192,7 @@ void ofApp::apparaatUpdate()
 			}
 			pot2--;
 		}
-		cout << pot2 << endl;
+		//cout << pot2 << endl;
 	}
 	else
 	{

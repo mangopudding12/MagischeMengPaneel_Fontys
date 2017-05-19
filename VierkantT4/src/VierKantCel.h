@@ -1,9 +1,8 @@
 #pragma once
 #include "ofMain.h"
-#include "HoofdCel.h"
 #include "miniCel.h"
 
-class VierkantCel :  public HoofdCel
+class VierkantCel 
 {
 public:
 
@@ -22,6 +21,7 @@ public:
 	void minicelMove(float snelheid_);
 
 private: 
+	int Mzijde;
 	int V_state;
 	bool V_geit = false;
 	int V_vorm;

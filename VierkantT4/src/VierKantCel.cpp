@@ -32,10 +32,10 @@ void VierkantCel::minicelDisplay(int pot_)
 
 void VierkantCel::minicelMove(float snelheidpotmeter_)
 {
-		mCel[0].move(V_location.x, V_location.y, V_bh.x, V_bh.y, 1,V_speed, snelheidpotmeter_);
-		mCel[1].move(V_location.x, V_location.y, V_bh.x, V_bh.y, 2, V_speed, snelheidpotmeter_);
-		mCel[2].move(V_location.x, V_location.y, V_bh.x, V_bh.y, 3, V_speed, snelheidpotmeter_);
-		mCel[3].move(V_location.x, V_location.y, V_bh.x, V_bh.y, 4, V_speed, snelheidpotmeter_);
+		mCel[0].move(V_location.x, V_location.y, V_bh.x, V_bh.y, 1, Mzijde,V_speed, snelheidpotmeter_);
+		mCel[1].move(V_location.x, V_location.y, V_bh.x, V_bh.y, 2, Mzijde, V_speed, snelheidpotmeter_);
+		mCel[2].move(V_location.x, V_location.y, V_bh.x, V_bh.y, 3, Mzijde, V_speed, snelheidpotmeter_);
+		mCel[3].move(V_location.x, V_location.y, V_bh.x, V_bh.y, 4, Mzijde, V_speed, snelheidpotmeter_);
 }
 
 void VierkantCel::Vdisplay()
@@ -55,45 +55,49 @@ void VierkantCel::move(float Mloca_x, float Mloca_y, float Mbh_x, float Mbh_y, i
 
 	if (V_state == 1) // Links naar recht bewegen op Xas.
 	{
+		Mzijde = 1;
 		V_location.x += (V_speed + M_speedx);
-		V_location.y = Mloca_y;
+		V_location.y = Mloca_y - V_bh.y/2;
 
-		if (V_location.x >= (Mloca_x + Mbh_x))
+		if (V_location.x >= (Mloca_x + Mbh_x) - V_bh.x / 2)
 		{
-			V_location.x = (Mloca_x + Mbh_x);
+			V_location.x = (Mloca_x + Mbh_x) - V_bh.x / 2;
 			V_state = 2;
 		}
 	}
 	else if (V_state == 2) // Beneden naar boven op de yAS (houd rekening het is omgekeerd)
 	{
-		V_location.x = Mloca_x + Mbh_x;
+		Mzijde = 2;
+		V_location.x = (Mloca_x + Mbh_x) - V_bh.x / 2;
 		V_location.y += (V_speed + M_speedy);
 
-		if (V_location.y >= (Mloca_y + Mbh_y))
+		if (V_location.y >= (Mloca_y + Mbh_y) - V_bh.y / 2)
 		{
-			V_location.y = (Mloca_y + Mbh_y);
+			V_location.y = (Mloca_y + Mbh_y) -V_bh.y / 2;
 			V_state = 3;
 		}
 	}
 	else if (V_state == 3) // Links naar Rechts op de Xas 
 	{
+		Mzijde = 3;
 		V_location.x -= (V_speed - M_speedx);
-		V_location.y = Mloca_y + Mbh_y;
+		V_location.y = (Mloca_y + Mbh_y) - V_bh.y / 2;
 
-		if (V_location.x <= Mloca_x)
+		if (V_location.x <= Mloca_x - V_bh.x / 2)
 		{
-			V_location.x = Mloca_x;
+			V_location.x = Mloca_x - V_bh.x / 2;
 			V_state = 4;
 		}
 	}
 	else if (V_state == 4) // Boven naar beneden op de Yas 
 	{
-		V_location.x = Mloca_x;
+		Mzijde = 4;
+		V_location.x = Mloca_x - V_bh.x / 2;
 		V_location.y -= (V_speed - M_speedy);
 
-		if (V_location.y <= Mloca_y)
+		if (V_location.y <= Mloca_y - V_bh.y / 2)
 		{
-			V_location.y = Mloca_y;
+			V_location.y = Mloca_y - V_bh.y / 2;
 			V_state = 1;
 		}
 	}

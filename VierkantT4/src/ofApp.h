@@ -26,7 +26,16 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		
-		bool zichtbaar = false; 
+		bool zichtbaar = false;
+
+
+		M_VierkantCel testM;
+		M_VierkantCel testM1;
+		M_VierkantCel testM2;
+		M_VierkantCel testM3;
+		M_VierkantCel testM4;
+		M_VierkantCel testM5;
+
 
 		// device stuff 
 			int welkeApparaat;
