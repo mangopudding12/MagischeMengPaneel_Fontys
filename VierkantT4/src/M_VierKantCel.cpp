@@ -43,6 +43,7 @@ void M_VierkantCel::SetupVierKantCel(int vorm_, float speed_, float Vbh_x, float
 	vierkant[6] = VierkantCel(vorm_, speed_, Vbh_x, Vbh_y, M_location.x - Vbh_x / 2, M_location.y - Vbh_y / 2, M_bh.x / 2, M_bh.y);
 	vierkant[6].SetupminiCel(2, 1, 20, 20); // int vorm_, float speed_, float Ibh_x, float Ibh_y	
 
+	// 1
 	vierkant[7] = VierkantCel(vorm_, speed_, Vbh_x, Vbh_y, M_location.x - Vbh_x / 2, M_location.y - Vbh_y / 2, 0, M_bh.y/2);
 	vierkant[7].SetupminiCel(2, 1, 20, 20); // int vorm_, float speed_, float Ibh_x, float Ibh_y	
 }
@@ -52,7 +53,7 @@ void M_VierkantCel::VierKantCelDisplay(int pot_)
 	for (int i = 0; i < 4; i++)
 	{
 	vierkant[i].minicelDisplay(150);
-		
+	//vierkant[i].Vdisplay();
 	}
 
 	vierkant[4].minicelDisplay(1023);
@@ -60,10 +61,10 @@ void M_VierkantCel::VierKantCelDisplay(int pot_)
 	vierkant[6].minicelDisplay(1023);
 	vierkant[7].minicelDisplay(1023);
 
-	vierkant[4].Vdisplay();
-	vierkant[5].Vdisplay();
-	vierkant[6].Vdisplay();
-	vierkant[7].Vdisplay();
+	//vierkant[4].Vdisplay();
+	//vierkant[5].Vdisplay();
+	//vierkant[6].Vdisplay();
+	//vierkant[7].Vdisplay();
 }
 
 void M_VierkantCel::VierKantCelMove(float snelheid_)
